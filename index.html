@@ -618,6 +618,32 @@
         height: 30px;
         margin: 0 auto;
     }
+
+    .suibian {
+        display: block;
+        width: 900px;
+        height: 200px;
+        margin: 100px auto;
+        border: 1px solid red;
+        overflow: hidden;
+    }
+
+    .suibian>ul {
+        display: block;
+        width: 2220px;
+        height: 200px;
+        float: left;
+    }
+
+    .suibian>ul>li {
+        display: block;
+        width: 200px;
+        height: 200px;
+        float: left;
+        margin-right: 5px;
+        border: 1px solid red;
+
+    }
 </style>
 
 <body>
@@ -824,7 +850,19 @@
             <div class="context">暂时不写table 涉及到的插件太多了，随便用一个就是可以</div>
         </div>
     </div>
-    <div><span id="text">111</span></div>
+    <!-- <div><span id="text">111</span></div> -->
+
+    <div class="container">
+        <div class="suibian">
+            <ul class="myul">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
     <script type="text/javascript" src="box.js"></script>
     <script>
 
@@ -860,6 +898,41 @@
 
         }
 
+        //图片展示移动
+        var suibian = document.querySelector(".suibian"),
+            myul = document.querySelector(".myul"),
+            lis = myul.getElementsByTagName("li"),
+            index = 0;
+        var w = parseInt(lis[0].offsetWidth + parseInt(getStyle(lis[0], 'margin-right'))),
+            ws = w * lis.length,
+            suibian_w = suibian.clientWidth;
+        myul.appendChild(lis[0].cloneNode(true))
+        myul.appendChild(lis[1].cloneNode(true))
+        myul.appendChild(lis[2].cloneNode(true))
+        myul.appendChild(lis[3].cloneNode(true))
+        myul.appendChild(lis[4].cloneNode(true))
+        setInterval(function () {
+
+
+            myul.style.transition = "all 5s linear 0ms";
+            myul.style.transform = "translateX(" + -ws + "px)"
+
+
+            //transitionstart、transitionrun、transitionend
+            myul.addEventListener("transitionend", function (e) {
+                myul.style = null;
+            });
+
+        }, 20)
+
+        //兼容IE浏览器
+        function getStyle(obj, attr) {
+            if (obj.currentStyle) {
+                return obj.currentStyle[attr];
+            } else {
+                return document.defaultView.getComputedStyle(obj, null)[attr];
+            }
+        }
     </script>
 
 
