@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 300px;
+            width: 300px;
+            border: 1px solid #000;
+            transition: all 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+    <script>
+        window.onload = function () {
+            var box = document.querySelector(".box");
+            box.onclick = function () {
+                this.style.backgroundColor = "red";
+            }
+            // 过渡(动画)结束事件(CSS3的新属性,要加上浏览器前缀webkit)
+            box.addEventListener("webkitTransitionEnd", function () {
+                this.style.borderRadius = "50px";
+            });
+        }
+
+    </script>
+</body>
+
+</html>

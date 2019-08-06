@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #a {
+            width: 200px;
+            height: 200px;
+            margin: 200px auto;
+            position: relative;
+            /*给父元素相对定位*/
+            transform-style: preserve-3d;
+            /*父元素设为3d*/
+            transform: perspective(1000px) rotateY(30deg) rotateX(30deg);
+            /*设置父元素得景深*/
+        }
+
+        #a>div {
+            position: absolute;
+            /*盒子每面的默认样式*/
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000000;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        #a>div:nth-child(1) {
+            transform: translateZ(100px);
+            /*前面盒子宽为200px所以先向前位移100px*/
+            background: rgba(0, 0, 255, 0.2);
+        }
+
+        #a>div:nth-child(2) {
+            transform: translateZ(-100px);
+            /*第二元素向后位移100px 这样盒子前后面就有了*/
+            background: rgba(0, 255, 0, 0.2);
+        }
+
+        #a>div:nth-child(3) {
+            transform: rotateX(90deg) translateZ(100px);
+            /*第三个让他平躺下，也就是x轴旋转90°，旋转后在位移，这样就会向他面对的那面去位移*/
+            background: rgba(255, 0, 0, 0.2);
+        }
+
+        #a>div:nth-child(4) {
+            transform: rotateX(90deg) translateZ(-100px);
+            background: rgba(255, 255, 0, 0.2);
+        }
+
+        #a>div:nth-child(5) {
+            transform: rotateY(90deg) translateZ(-100px);
+            background: rgba(0, 255, 255, 0.2);
+        }
+
+
+        /*总结就是先旋转在位移，z轴就是div面向那面那面将会是z所以说先旋转在位移这样位移也就是100px 和 -100px 的事*/
+        #a>div:nth-child(6) {
+            transform: rotateY(90deg) translateZ(100px);
+            background: rgba();
+        }
+    </style>
+</head>
+
+<body>
+    <div id="a">
+        <div>前</div>
+        <div>后</div>
+        <div>上</div>
+        <div>下</div>
+        <div>左</div>
+        <div>右</div>
+    </div>
+</body>
+<script type="text/javascript">
+    var a = document.getElementById("a")
+    var x;
+    var y;
+    a.onmousedown = function (ev) { //在div上摁下时
+        x = ev.clientX        //获取当前鼠标的位置
+        y = ev.clientY
+        document.onmousemove = function (ev) {//鼠标移动时
+            var x1 = ev.clientX - x + 30 //当前位置减去下时鼠标的位置，就获取移动了多少度，应为一开始有初始角度所以加30°
+            var y1 = ev.clientY - y - 30
+            //甚至样式每次鼠标移动式更改样式
+            a.style.transform = "perspective(1000px) rotateY(" + x1 + "deg) rotateX(" + -(y1) + "deg)";
+        }
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        }
+    }
+</script>
+
+</html>　

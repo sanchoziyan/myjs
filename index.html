@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: "微软雅黑";
+    }
+
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+        color: red
+    }
+
+    ul,
+    ol {
+        list-style: none;
+    }
+
+    .nav .menu .message .logo,
+    .container {
+        width: 100%;
+
+    }
+
+    .menu>ul {
+        width: 80%;
+        margin: 0 auto;
+
+    }
+
+    .menu>div {
+        width: 10%;
+    }
+
+    .menu>ul,
+    .menu>ul>li,
+    .menu>div,
+    .menu>div>ol>li>span,
+    .menu>div>ol,
+    .menu>div>ol>li,
+    .container>.boxLeft,
+    .container>.boxCenter>.context>.tu>ul>li,
+    .container>.boxCenter,
+    .box2>ul>li {
+        float: left;
+    }
+
+    .menu>ul>li span,
+    .menu>div>ol>li>span,
+    .box2>ul>li,
+    .box1>div>ul>li {
+        display: block;
+    }
+
+    .message {
+        height: 18px;
+        font-size: 12px;
+        background-color: #eeeeee;
+
+    }
+
+    .message>span {
+        display: block;
+        margin-left: 30px;
+    }
+
+    .message1 {
+        width: 60%;
+        height: 18px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .logo {
+        height: 100px;
+    }
+
+    .menu {
+        height: 50px;
+        border-bottom: 1px solid #eeeeee;
+        background-color: lightblue;
+    }
+
+
+    .menu>ul {
+        height: 50px;
+    }
+
+    .menu>ul>li,
+    .menu>ul>li span {
+        width: 80px;
+        height: 50px;
+    }
+
+    .menu>ul>li {
+
+        text-align: center;
+        line-height: 50px;
+        border-left: 1px solid #eeeeee;
+
+    }
+
+    .menu>ul>li:first-child {
+        border: none;
+    }
+
+
+
+    .menu>ul>li span {
+
+        position: absolute;
+
+    }
+
+    .menu>ul>li :nth-child(1) {
+
+        background-color: rgba(50, 205, 115, 0.199);
+    }
+
+    .menu>ul>li :nth-last-child(1) {
+
+        display: none;
+        /* transform: rotateY(-90deg) translateZ(50px); */
+        background-color: rgba(144, 238, 144, 0.233)
+    }
+
+    .menu>ul>li {
+        position: relative;
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+        transition: all .3s
+    }
+
+    .menu>div {
+
+        height: 50px;
+    }
+
+    .menu>div>ol>li>span,
+    .menu>div>ol>li {
+
+        width: 48px;
+        height: 48px;
+        text-align: center;
+        line-height: 48px;
+    }
+
+    .menu>div>ol>li>span {
+        border: 1px solid #eeeeee;
+        border-radius: 100%;
+
+        background-color: rgba(240, 128, 128, 0.473);
+
+        overflow: hidden;
+    }
+
+    .menu>div>ol>li>span {
+        /*  transform-style: preserve-3d;
+        transform: perspective(1000px); */
+        transition: all .5s;
+        /* translateX(70px) rotate(-360deg); */
+    }
+
+    /* .menu>div>ol>li>span:hover {
+        transform: rotateY(180deg)
+    } */
+
+
+    .container {
+        height: 500px;
+        margin: 0 auto;
+        /* border: 1px solid red; */
+    }
+
+    .container>.boxLeft {
+        width: 30%;
+        height: 500px;
+        float: left;
+    }
+
+    .container>.boxCenter {
+        width: 50%;
+        height: 500px;
+        float: left;
+    }
+
+    .container>.boxRight {
+        width: 20%;
+        height: 500px;
+        float: right;
+    }
+
+    .container>.boxCenter>.title,
+    .title {
+        height: 50px;
+        border: 1px solid red;
+        text-align: center;
+        line-height: 50px;
+        font-family: "微软雅黑";
+        font-size: 16px;
+        font-weight: bold;
+
+    }
+
+    .container>.boxCenter>.context,
+    .context {
+        height: 450px;
+        border: 1px solid red;
+    }
+
+    .container>.boxCenter>.context>.tu>ul {
+        width: 450px;
+        height: 100px;
+        margin: 0 auto;
+    }
+
+    .container>.boxCenter>.context>.tu>ul>li {
+        display: block;
+        width: 120px;
+        height: 120px;
+        /*  border: 1px solid lightblue; */
+        margin: 10px;
+    }
+
+    .container>.boxCenter>.context>.tu>ul>li {
+        position: relative;
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+        transition: all .5s;
+    }
+
+    .container>.boxCenter>.context>.tu>ul>li span {
+        display: block;
+        position: absolute;
+        width: 120px;
+        height: 120px;
+
+    }
+
+    .container>.boxCenter>.context>.tu>ul>li span:nth-child(1) {
+        background-color: rgba(50, 205, 115, 0.199);
+    }
+
+    .container>.boxCenter>.context>.tu>ul>li span:nth-child(2) {
+        display: none;
+        background-color: rgba(240, 128, 128, 0.315);
+    }
+
+    .container>.boxLeft>.context>.lunbo {
+        width: 350px;
+        height: 390px;
+        margin: 10px auto;
+        border: 1px solid red;
+    }
+
+    .box1 {
+        width: 350px;
+        height: 350px;
+        overflow: hidden;
+    }
+
+    .box2 {
+        width: 350px;
+        height: 40px;
+        border: 1px solid red;
+    }
+
+    .box1>ul {
+        width: 1050px;
+        height: 350px;
+
+    }
+
+    .box1>ul>li {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+    }
+
+    .box1>ul>li:nth-child(1) {
+        background-color: rgba(173, 216, 230, 0.274);
+    }
+
+    .box1>ul>li:nth-child(2) {
+        display: none;
+        background-color: rgba(230, 99, 90, 0.274);
+    }
+
+    .box1>ul>li:nth-child(3) {
+        display: none;
+        background-color: rgba(147, 197, 54, 0.274);
+    }
+
+    .box1>ul {
+        transform: translateX(-30px)
+    }
+
+    .box1 {
+        position: relative;
+    }
+
+    .box1>ul {
+        position: absolute;
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+        /* transition: all .5s; */
+    }
+
+    /* .box1>ul:hover {
+        transform: translateX(350px)
+    } */
+
+    /* .box1>ul>li:nth-child(3) {
+        transform: translateX(-1050px)
+    } */
+
+    .box2>ul {
+        width: 100px;
+        height: 20px;
+        margin: 10px auto;
+    }
+
+    .box2>ul>li {
+        width: 20px;
+        height: 20px;
+        border: 1px solid lightblue;
+        border-radius: 100%;
+        margin: 0 5px;
+    }
+
+
+    .box1>div>ul>li {
+        width: 30px;
+        height: 50px;
+        background-color: lightcoral;
+        text-align: center;
+        line-height: 50px;
+        margin-top: 125px;
+        color: lightcyan;
+
+    }
+
+    .box1>div {
+        position: absolute;
+    }
+
+    .box1>div>ul {
+
+        width: 350px;
+    }
+
+    .box1>div>ul>li:nth-child(1) {
+        float: left;
+    }
+
+    .box1>div>ul>li:nth-child(2) {
+        float: right;
+        background-color: lightcoral
+    }
+
+
+    .text {
+        position: absolute;
+
+        /* transform-style: preserve-3d;
+        transform: perspective(1000px);
+        transition: all 2s; */
+    }
+
+    .sidebar-menu {
+        width: 80%;
+        height: 390px;
+        margin: 10px auto;
+        border: 1px solid red;
+        overflow-y: auto
+    }
+
+    .sidebar-menu>ul>li {
+        display: block;
+        float: left;
+        width: 100%;
+
+        border-top: 1px solid #eeeeee;
+    }
+
+    .sidebar-menu>ul>li>span {
+        display: block;
+        float: left;
+        width: 100%;
+        height: 50px;
+
+        text-align: left;
+        line-height: 50px;
+        font-size: 14px;
+        font-weight: bold;
+        background-color: rgba(144, 238, 144, 0.233)
+    }
+
+    .sm {
+        display: none;
+    }
+
+    .searchform {
+        margin: 10px;
+        float: right;
+    }
+
+    .adv {
+        width: 100px;
+        height: 300px;
+        border: 1px solid red;
+        background-color: rgba(144, 238, 144, 0.233);
+        position: fixed;
+        left: 30px;
+        top: 260px;
+        /*绝对定位*/
+        display: none;
+        z-index: 2;
+    }
+
+    .close {
+        width: 20px;
+        height: 10px;
+        font-size: 10px;
+        border: 1px solid #eeeeee;
+        margin-bottom: 5px;
+
+    }
+
+    .slide {
+        width: 100%;
+        height: 500px;
+        border: 1px solid red;
+    }
+
+    .slide>ul,
+    .slide>ul>li {
+        display: block;
+        width: 100%;
+        height: 500px;
+        position: absolute;
+    }
+
+    .slide>ul>li:nth-child(1) {
+        background-color: rgba(173, 216, 230, 0.425);
+    }
+
+    .slide>ul>li:nth-child(2) {
+        background-color: rgba(147, 231, 136, 0.425);
+    }
+
+    .slide>ul>li:nth-child(3) {
+        background-color: rgba(228, 154, 93, 0.425);
+    }
+
+    .slide>ul>li:nth-child(4) {
+        background-color: rgba(167, 122, 224, 0.425);
+    }
+
+    .slide>ul>li:nth-child(5) {
+        background-color: rgba(230, 173, 204, 0.425);
+    }
+
+    .slide {
+        position: relative
+    }
+
+    .slide>.dirs {
+        width: 100%;
+        position: absolute;
+        top: 45%;
+    }
+
+    .slide>.dirs>span {
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-color: rgba(202, 59, 59, 0.596);
+        color: lightcyan;
+        font-size: 45px;
+        border-radius: 100%;
+        text-align: center;
+        line-height: 45px;
+        margin: 0 10px;
+
+    }
+
+    .slide>.dirs>span:nth-child(1) {
+        float: left
+    }
+
+    .slide>.dirs>span:nth-child(2) {
+        float: right
+    }
+
+    .slide-nav {
+        display: block;
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        bottom: 0;
+        background-color: rgba(224, 255, 255, 0.356);
+    }
+
+    .slide-nav>ol {
+        display: block;
+        width: 300px;
+        height: 40px;
+        float: right;
+    }
+
+
+
+    .slide-nav>ol>li {
+        display: block;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        /* background-color: rgba(230, 24, 55, 0.658); */
+        float: left;
+        margin: 5px;
+        color: lightyellow;
+        text-align: center;
+        line-height: 40px;
+    }
+
+    .title1 {
+        width: 300px;
+        height: 60px;
+        font-size: 14px;
+        font-weight: blod;
+        text-align: center;
+        line-height: 60px;
+        color: rgba(224, 19, 36, 0.863);
+        background-color: rgba(249, 250, 250, 0.397);
+        position: absolute;
+        top: 100px;
+        transform: translateX(-100%) rotate(45deg) skewX(-45deg);
+    }
+
+    .content1 {
+        width: 300px;
+        color: rgba(224, 19, 36, 0.863);
+        background-color: rgba(249, 250, 250, 0.397);
+        position: absolute;
+        transform: translateX(-100%);
+    }
+
+    .tab {
+        width: 40%;
+        height: 100%;
+        float: left;
+        /* background-color: rgba(50, 205, 115, 0.199); */
+    }
+
+    .table {
+        width: 60%;
+        height: 100%;
+        float: left;
+        /* background-color: rgba(240, 128, 128, 0.315); */
+    }
+
+    .tab_bar {
+        width: 80%;
+        height: 100%;
+        margin: 0 auto;
+        position: relative;
+
+    }
+
+    .tab_bar_title {
+        width: 80%;
+        height: 30px;
+        /* border: 1px solid #eeeeee; */
+    }
+
+    .tab_bar>.tab_bar_title>ul>li {
+        display: block;
+        float: left;
+        width: 100px;
+        height: 30px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 30px;
+        border-left: 1px solid #eeeeee;
+        background-color: rgba(240, 128, 128, 0.315);
+    }
+
+    .tab_bar>ul>li :nth-child(1) {
+        border-left: null;
+    }
+
+    .tab_bar_content {
+        width: 80%;
+        height: 420px;
+        border: 1px solid #eeeeee;
+        position: absolute;
+        top: 30px;
+    }
+
+    .log {
+        width: 100%
+    }
+
+    .tanchuang {
+        width: 80px;
+        height: 30px;
+        margin: 0 auto;
+    }
+</style>
+
+<body>
+    <div class="nav">
+        <div class="message">
+            <div class="message1">
+                <span class="text">欢迎光临本网站</span>
+            </div>
+
+        </div>
+        <div class="logo">
+            <div class="searchform"><input type="text" /><button>search</button></div>
+            <div class="tanchuang"><button class='btn' onclick="fun2()">弹窗</button></div>
+        </div>
+        <div class="menu">
+            <div>logo
+            </div>
+            <ul class="mousebox">
+                <li><span>首页</span><span>HOME</span>
+                </li>
+                <li><span>栏目一</span><span>MENU1</span></li>
+                <li><span>栏目二</span><span>MENU2</span></li>
+            </ul>
+
+            <div>
+                <ol>
+                    <li>
+                        <span id="phone"><img src="./img/phone.jpg" style="width:48px;height:48px" /></sapn>
+                    </li>
+                    <li>登陆</li>
+                    <li>退出</li>
+
+                </ol>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="boxLeft">
+            <div class="title">轮播图</div>
+            <div class="context">
+                <div class="lunbo">
+                    <div class="box1">
+
+                        <ul>
+                            <li>tu1</li>
+                            <li>tu2</li>
+                            <li>tu3</li>
+                        </ul>
+                        <div>
+                            <ul>
+                                <li class="left" id="left">&lt;</li>
+                                <li class="right" id="right">&gt;</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="box2">
+                        <ul>
+                            <li index=0></li>
+                            <li index=1></li>
+                            <li index=2></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="boxCenter">
+            <div class="title">title图片墙</div>
+            <div class="context">
+                <div class="tu">
+                    <ul class="mousebox">
+                        <li><span>2</span><span>2</span></li>
+                        <li><span>2</span><span>2</span></li>
+                        <li><span>2</span><span>2</span></li>
+                    </ul>
+                </div>
+                <div class="tu">
+                    <ul class="mousebox">
+                        <li><span>2</span><span>2</span></li>
+                        <li><span>2</span><span>2</span></li>
+                        <li><span>2</span><span>2</span></li>
+
+                    </ul>
+                </div>
+                <div class="tu">
+                    <ul class="mousebox">
+                        <li><span>2</span><span>2</span></li>
+                        <li><span>2</span><span>2</span></li>
+                        <li><span>2</span><span>2</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="boxRight">
+            <div class="title">侧导航</div>
+            <div class="context">
+                <div class="sidebar-menu">
+                    <ul>
+                        <li><span><a>侧栏1</a></span>
+                            <ul class="sm">
+                                <li><span><a>123</a></span></li>
+                                <li><span><a>133</a></span></li>
+                                <li><span><a>133</a></span></li>
+                            </ul>
+                        </li>
+                        <li><span><a>侧栏211</a></span>
+                            <ul class="sm">
+                                <li><span><a>244</a></span></li>
+                                <li><span><a>2re</a></span></li>
+                                <li><span><a>2e</a></span></li>
+                            </ul>
+                        </li>
+                        <li><span><a>侧栏3222</a></span>
+                            <ul class="sm">
+                                <li><span><a>244</a></span></li>
+                                <li><span><a>2re</a></span></li>
+                                <li><span><a>2e</a></span></li>
+                                <li><span><a>2e</a></span></li>
+                                <li><span><a>2e</a></span></li>
+                                <li><span><a>2e</a></span></li>
+                            </ul>
+                        </li>
+                        <li><span><a>侧栏43333</a></span>
+
+                            <ul class="sm">
+                                <li><span><a>244</a></span></li>
+                                <li><span><a>2re</a></span></li>
+                                <li><span><a>2e</a></span></li>
+                                <li><span><a>2e</a></span></li>
+                                <li><span><a>2e</a></span></li>
+                                <li><span><a>2e</a></span></li>
+                            </ul>
+                        </li>
+
+                        <li><span><a>侧栏43333</a></span></li>
+                        <li><span><a>侧栏43333</a></span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="adv">
+        <div class="close"><a>关闭</a></div>
+        <span>我只是一个单纯的广告</span>
+    </div>
+
+
+    <div class="container">
+        <div class="slide">
+            <ul class="img">
+                <li>幻灯片1
+                    <div class="title1">我是标题</div>
+                    <div class="content1">222</div>
+                </li>
+                <li>幻灯片2</li>
+                <li>幻灯片3</li>
+                <li>幻灯片4</li>
+                <li>幻灯片5</li>
+            </ul>
+            <div class="dirs">
+                <span id="dirL">&lt;</span>
+                <span id="dirR">&gt;</span>
+            </div>
+            <div class="slide-nav">
+                <ol class="slide-nav1">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ol>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="tab">
+
+            <div class="title">tab切换</div>
+            <div class="context">
+                <div class="tab_bar">
+                    <dvi class="tab_bar_title">
+                        <ul>
+                            <li index=0><span><a index=0>栏目1</a></span></li>
+                            <li index=1><span><a index=1>栏目2</a></span></li>
+                            <li index=2><span><a index=2>栏目3</a></span></li>
+                        </ul>
+                    </dvi>
+                    <div class="tab_bar_content">
+                        <span>111111</span>
+                        <span>22222</span>
+                        <span>3333333</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table">
+
+            <div class="title">table表格</div>
+            <div class="context">暂时不写table 涉及到的插件太多了，随便用一个就是可以</div>
+        </div>
+    </div>
+    <div><span id="text">111</span></div>
+    <script type="text/javascript" src="box.js"></script>
+    <script>
+
+        //文字无缝滚动效果--》参数：滚动的span元素
+        var MsgMove = new MsgMove(".text");
+
+        //盒子翻转特效--》参数：翻转的ul父元素（结构li里面必须有2个span）
+        var q1 = new MouseBox(".mousebox");
+
+        //圆形头像图片旋转--》参数：旋转的id元素
+        var MouseRL = new MouseRL("#phone")
+
+        //轮播图特效--》参数 ：大的轮播className
+        var Lunbo = new Lunbo(".lunbo", ".left", ".right")
+
+        //侧边栏导航效果
+        var SideBarMenu = new SideBarMenu(".sidebar-menu", ".sm")
+
+        //广告自动显示，关闭广告
+        var adv = new adv(".adv", ".close");
+
+
+        //大轮播图
+        var SlideImg = new SlideImg(".slide", ".img", ".slide-nav1", "#dirL", "#dirR", ".title1", ".content1");
+
+
+        //tab切换效果
+        var TabObject = new TabObject(".tab_bar_title", ".tab_bar_content");
+
+        //弹窗点击事件
+        function fun2() {//,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no
+            window.open('sub.html', '_blank', 'width=400,height=100,modal=yes,menubar=no,toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes')
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

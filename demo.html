@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    .box {
+        float: left;
+        width: 100px;
+        height: 50px;
+        /* border: 1px solid red; */
+        margin: 36px;
+        position: relative;
+
+        transform-style: preserve-3d;
+        transform: perspective(1000px)
+            /* rotateX(45deg) rotateY(45deg) */
+    }
+
+    .box>div {
+        position: absolute;
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    .box>:nth-child(1) {
+        /*   transform: translateZ(50px); */
+        background-color: rgba(173, 216, 230, 0.836);
+    }
+
+    .box>:last-child {
+        /*    transform: rotateX(90deg) translateZ(100px); */
+        background-color: rgba(144, 238, 144, 0.233)
+    }
+
+
+
+    .box {
+        /* transition: all 1s linear .5s; */
+        transition: all .3s
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div>1</div>
+            <div>1</div>
+        </div>
+        <div class="box">
+            <div>2</div>
+            <div>2</div>
+        </div>
+        <div class="box">
+            <div>3</div>
+            <div>3</div>
+        </div>
+    </div>
+    <script type="text/javascript" src="box.js"></script>
+    <script>
+        var box = document.getElementsByClassName("box");
+
+
+        for (var i = 0; i < box.length; i++) {
+            box[i].index = i;
+
+            mousehove(box[i], box)
+
+        }
+
+    </script>
+</body>
+
+</html>
